@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    </head>
+    <body>
+
+    <div class="alert alert-success">
+    {% set flashbag_notices = app.session.flashbag.get('notice') %}
+    {% if flashbag_notices is not empty %}
+  
+    <div class="flash-notice">
+        {% for notice in flashbag_notices %}
+        {{notice}}
+        {% endfor %}
+    </div>
+{% endif %}
+</div>
+
+ {% block body %}{% endblock %}
+
+
+       
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>
